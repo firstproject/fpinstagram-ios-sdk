@@ -6,8 +6,5 @@
 //  Copyright (c) 2012 First Project. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
-
-@interface FPInstagram : NSObject
-
-@end
+#import "FPInstagramSession.h"
+#import "FPInstagramAuthDialog.h"

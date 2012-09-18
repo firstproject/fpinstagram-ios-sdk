@@ -7,9 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8B8DA96A16072A85002E54CD /* FPJSONUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B8DA96916072A85002E54CD /* FPJSONUtilities.m */; };
+		8B8DA99116073768002E54CD /* FPInstagramAuthDialog.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B8DA99016073768002E54CD /* FPInstagramAuthDialog.m */; };
+		8B8DA99716073961002E54CD /* FPInstagramSession.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B8DA99616073961002E54CD /* FPInstagramSession.m */; };
+		8B8DA9A416075269002E54CD /* FPInstagramRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B8DA9A316075269002E54CD /* FPInstagramRequest.m */; };
 		8BC5AB2B1607173900675FDA /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8BC5AB2A1607173900675FDA /* Foundation.framework */; };
 		8BC5AB301607173900675FDA /* FPInstagram.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 8BC5AB2F1607173900675FDA /* FPInstagram.h */; };
-		8BC5AB321607173900675FDA /* FPInstagram.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BC5AB311607173900675FDA /* FPInstagram.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -26,11 +29,19 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		8B8DA96816072A85002E54CD /* FPJSONUtilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FPJSONUtilities.h; sourceTree = "<group>"; };
+		8B8DA96916072A85002E54CD /* FPJSONUtilities.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FPJSONUtilities.m; sourceTree = "<group>"; };
+		8B8DA96C1607312A002E54CD /* FPPreprocessor.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FPPreprocessor.h; sourceTree = "<group>"; };
+		8B8DA98F16073768002E54CD /* FPInstagramAuthDialog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FPInstagramAuthDialog.h; sourceTree = "<group>"; };
+		8B8DA99016073768002E54CD /* FPInstagramAuthDialog.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FPInstagramAuthDialog.m; sourceTree = "<group>"; };
+		8B8DA99516073961002E54CD /* FPInstagramSession.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FPInstagramSession.h; sourceTree = "<group>"; };
+		8B8DA99616073961002E54CD /* FPInstagramSession.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FPInstagramSession.m; sourceTree = "<group>"; };
+		8B8DA9A216075269002E54CD /* FPInstagramRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FPInstagramRequest.h; sourceTree = "<group>"; };
+		8B8DA9A316075269002E54CD /* FPInstagramRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FPInstagramRequest.m; sourceTree = "<group>"; };
 		8BC5AB271607173900675FDA /* libFPInstagram.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libFPInstagram.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		8BC5AB2A1607173900675FDA /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		8BC5AB2E1607173900675FDA /* FPInstagram-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "FPInstagram-Prefix.pch"; sourceTree = "<group>"; };
 		8BC5AB2F1607173900675FDA /* FPInstagram.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FPInstagram.h; sourceTree = "<group>"; };
-		8BC5AB311607173900675FDA /* FPInstagram.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FPInstagram.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -73,8 +84,16 @@
 		8BC5AB2C1607173900675FDA /* FPInstagram */ = {
 			isa = PBXGroup;
 			children = (
+				8B8DA96C1607312A002E54CD /* FPPreprocessor.h */,
 				8BC5AB2F1607173900675FDA /* FPInstagram.h */,
-				8BC5AB311607173900675FDA /* FPInstagram.m */,
+				8B8DA99516073961002E54CD /* FPInstagramSession.h */,
+				8B8DA99616073961002E54CD /* FPInstagramSession.m */,
+				8B8DA96816072A85002E54CD /* FPJSONUtilities.h */,
+				8B8DA96916072A85002E54CD /* FPJSONUtilities.m */,
+				8B8DA98F16073768002E54CD /* FPInstagramAuthDialog.h */,
+				8B8DA99016073768002E54CD /* FPInstagramAuthDialog.m */,
+				8B8DA9A216075269002E54CD /* FPInstagramRequest.h */,
+				8B8DA9A316075269002E54CD /* FPInstagramRequest.m */,
 				8BC5AB2D1607173900675FDA /* Supporting Files */,
 			);
 			name = FPInstagram;
@@ -139,7 +158,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8BC5AB321607173900675FDA /* FPInstagram.m in Sources */,
+				8B8DA96A16072A85002E54CD /* FPJSONUtilities.m in Sources */,
+				8B8DA99116073768002E54CD /* FPInstagramAuthDialog.m in Sources */,
+				8B8DA99716073961002E54CD /* FPInstagramSession.m in Sources */,
+				8B8DA9A416075269002E54CD /* FPInstagramRequest.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

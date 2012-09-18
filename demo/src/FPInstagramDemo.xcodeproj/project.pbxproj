@@ -38,14 +38,14 @@
 
 /* Begin PBXFileReference section */
 		8B8DA95C16071877002E54CD /* FPInstagram.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = FPInstagram.xcodeproj; path = ../../src/FPInstagram.xcodeproj; sourceTree = "<group>"; };
-		8BC5AB4A160717A400675FDA /* FBInstagramDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FBInstagramDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		8BC5AB4A160717A400675FDA /* FPInstagramDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FPInstagramDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8BC5AB4E160717A400675FDA /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		8BC5AB50160717A400675FDA /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		8BC5AB52160717A400675FDA /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
-		8BC5AB56160717A400675FDA /* FBInstagramDemo-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "FBInstagramDemo-Info.plist"; sourceTree = "<group>"; };
+		8BC5AB56160717A400675FDA /* FPInstagramDemo-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "FPInstagramDemo-Info.plist"; sourceTree = "<group>"; };
 		8BC5AB58160717A400675FDA /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		8BC5AB5A160717A400675FDA /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		8BC5AB5C160717A400675FDA /* FBInstagramDemo-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "FBInstagramDemo-Prefix.pch"; sourceTree = "<group>"; };
+		8BC5AB5C160717A400675FDA /* FPInstagramDemo-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "FPInstagramDemo-Prefix.pch"; sourceTree = "<group>"; };
 		8BC5AB5D160717A400675FDA /* FPAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FPAppDelegate.h; sourceTree = "<group>"; };
 		8BC5AB5E160717A400675FDA /* FPAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FPAppDelegate.m; sourceTree = "<group>"; };
 		8BC5AB60160717A400675FDA /* FPViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FPViewController.h; sourceTree = "<group>"; };
@@ -88,7 +88,7 @@
 		8BC5AB3F160717A400675FDA = {
 			isa = PBXGroup;
 			children = (
-				8BC5AB54160717A400675FDA /* FBInstagramDemo */,
+				8BC5AB54160717A400675FDA /* FPInstagramDemo */,
 				8B8DA95B1607185E002E54CD /* Third Party */,
 				8BC5AB4D160717A400675FDA /* Frameworks */,
 				8BC5AB4B160717A400675FDA /* Products */,
@@ -98,7 +98,7 @@
 		8BC5AB4B160717A400675FDA /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				8BC5AB4A160717A400675FDA /* FBInstagramDemo.app */,
+				8BC5AB4A160717A400675FDA /* FPInstagramDemo.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -113,7 +113,7 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		8BC5AB54160717A400675FDA /* FBInstagramDemo */ = {
+		8BC5AB54160717A400675FDA /* FPInstagramDemo */ = {
 			isa = PBXGroup;
 			children = (
 				8BC5AB5D160717A400675FDA /* FPAppDelegate.h */,
@@ -124,16 +124,16 @@
 				8BC5AB66160717A400675FDA /* FPViewController_iPad.xib */,
 				8BC5AB55160717A400675FDA /* Supporting Files */,
 			);
-			name = FBInstagramDemo;
+			name = FPInstagramDemo;
 			sourceTree = SOURCE_ROOT;
 		};
 		8BC5AB55160717A400675FDA /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				8BC5AB56160717A400675FDA /* FBInstagramDemo-Info.plist */,
+				8BC5AB56160717A400675FDA /* FPInstagramDemo-Info.plist */,
 				8BC5AB57160717A400675FDA /* InfoPlist.strings */,
 				8BC5AB5A160717A400675FDA /* main.m */,
-				8BC5AB5C160717A400675FDA /* FBInstagramDemo-Prefix.pch */,
+				8BC5AB5C160717A400675FDA /* FPInstagramDemo-Prefix.pch */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -141,9 +141,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		8BC5AB49160717A400675FDA /* FBInstagramDemo */ = {
+		8BC5AB49160717A400675FDA /* FPInstagramDemo */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 8BC5AB6B160717A400675FDA /* Build configuration list for PBXNativeTarget "FBInstagramDemo" */;
+			buildConfigurationList = 8BC5AB6B160717A400675FDA /* Build configuration list for PBXNativeTarget "FPInstagramDemo" */;
 			buildPhases = (
 				8BC5AB46160717A400675FDA /* Sources */,
 				8BC5AB47160717A400675FDA /* Frameworks */,
@@ -154,9 +154,9 @@
 			dependencies = (
 				8B8DA96616071881002E54CD /* PBXTargetDependency */,
 			);
-			name = FBInstagramDemo;
+			name = FPInstagramDemo;
 			productName = FBInstagramDemo;
-			productReference = 8BC5AB4A160717A400675FDA /* FBInstagramDemo.app */;
+			productReference = 8BC5AB4A160717A400675FDA /* FPInstagramDemo.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -169,7 +169,7 @@
 				LastUpgradeCheck = 0440;
 				ORGANIZATIONNAME = "First Project";
 			};
-			buildConfigurationList = 8BC5AB44160717A400675FDA /* Build configuration list for PBXProject "FBInstagramDemo" */;
+			buildConfigurationList = 8BC5AB44160717A400675FDA /* Build configuration list for PBXProject "FPInstagramDemo" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -187,7 +187,7 @@
 			);
 			projectRoot = "";
 			targets = (
-				8BC5AB49160717A400675FDA /* FBInstagramDemo */,
+				8BC5AB49160717A400675FDA /* FPInstagramDemo */,
 			);
 		};
 /* End PBXProject section */
@@ -317,9 +317,11 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "FBInstagramDemo-Prefix.pch";
-				INFOPLIST_FILE = "$(SRCROOT)/FBInstagramDemo-Info.plist";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				GCC_PREFIX_HEADER = "FPInstagramDemo-Prefix.pch";
+				HEADER_SEARCH_PATHS = "$(SRCROOT)/../../src";
+				INFOPLIST_FILE = "$(SRCROOT)/FPInstagramDemo-Info.plist";
+				LIBRARY_SEARCH_PATHS = "";
+				PRODUCT_NAME = FPInstagramDemo;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -328,9 +330,11 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "FBInstagramDemo-Prefix.pch";
-				INFOPLIST_FILE = "$(SRCROOT)/FBInstagramDemo-Info.plist";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				GCC_PREFIX_HEADER = "FPInstagramDemo-Prefix.pch";
+				HEADER_SEARCH_PATHS = "$(SRCROOT)/../../src";
+				INFOPLIST_FILE = "$(SRCROOT)/FPInstagramDemo-Info.plist";
+				LIBRARY_SEARCH_PATHS = "";
+				PRODUCT_NAME = FPInstagramDemo;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
@@ -338,7 +342,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		8BC5AB44160717A400675FDA /* Build configuration list for PBXProject "FBInstagramDemo" */ = {
+		8BC5AB44160717A400675FDA /* Build configuration list for PBXProject "FPInstagramDemo" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				8BC5AB69160717A400675FDA /* Debug */,
@@ -347,7 +351,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		8BC5AB6B160717A400675FDA /* Build configuration list for PBXNativeTarget "FBInstagramDemo" */ = {
+		8BC5AB6B160717A400675FDA /* Build configuration list for PBXNativeTarget "FPInstagramDemo" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				8BC5AB6C160717A400675FDA /* Debug */,
