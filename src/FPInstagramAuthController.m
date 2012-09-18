@@ -43,7 +43,6 @@ static NSString * const kAuthURIFormat = @"https://instagram.com/oauth/authorize
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Custom initialization
-		[[[UINavigationController alloc] initWithRootViewController:self] autorelease];
 		self.navigationItem.leftBarButtonItem = [[[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"Cancel", nil)
 																				  style:UIBarButtonItemStylePlain
 																				 target:self
@@ -87,15 +86,25 @@ static NSString * const kAuthURIFormat = @"https://instagram.com/oauth/authorize
 }
 
 - (void)present {
-	UIViewController * windowRootController = [[[[UIApplication sharedApplication] delegate] window] rootViewController];
-	[windowRootController presentModalViewController:self.navigationController animated:YES];
+	if (![self isViewLoaded]) {
+		[self retain];
+		
+		UIViewController * windowRootController = [[[[UIApplication sharedApplication] delegate] window] rootViewController];
+		[windowRootController presentModalViewController:[[[UINavigationController alloc] initWithRootViewController:self] autorelease]
+												animated:YES];
+	}
+}
+
+- (void)dismiss {
+	[self release];
+	[self dismissModalViewControllerAnimated:YES];
 }
 
 - (void)cancelButtonPressed:(id)sender {
-	[self dismissModalViewControllerAnimated:YES];
 	if ([self.delegate respondsToSelector:@selector(instagramAuthControllerDidCancel:)]) {
 		[self.delegate instagramAuthControllerDidCancel:self];
 	}
+	[self dismiss];
 }
 
 - (void)reload {
@@ -125,7 +134,7 @@ static NSString * const kAuthURIFormat = @"https://instagram.com/oauth/authorize
 			}
 		}
 		
-		NSMutableDictionary  * parameters = [NSMutableDictionary dictionary];
+		NSMutableDictionary * parameters = [NSMutableDictionary dictionary];
 		NSArray * parametersAndValues = [query componentsSeparatedByString:@"&"];
 		for (NSString * string in parametersAndValues) {
 			NSArray * parameterAndValue = [string componentsSeparatedByString:@"="];
@@ -146,19 +155,18 @@ static NSString * const kAuthURIFormat = @"https://instagram.com/oauth/authorize
 												  userInfo:userInfo];
 				NSLog(@"%@", error);
 				if ([self.delegate respondsToSelector:@selector(instagramAuthController:didFailWithError:)]) {
-					[self.delegate instagramAuthController:(FPInstagramAuthController *)self.navigationController didFailWithError:error];
+					[self.delegate instagramAuthController:(FPInstagramAuthController *)self didFailWithError:error];
 				}
 				
 			}
 		} else if ([parameters objectForKey:@"access_token"]) {
 			self.session.accessToken = [parameters objectForKey:@"access_token"];
 			if ([self.delegate respondsToSelector:@selector(instagramAuthControllerDidFinish:)]) {
-				[self.delegate instagramAuthControllerDidFinish:(FPInstagramAuthController *)self.navigationController];
+				[self.delegate instagramAuthControllerDidFinish:(FPInstagramAuthController *)self];
 			}
 		}
 		
-		[self dismissModalViewControllerAnimated:YES];
-		
+		[self dismiss];
 		result = NO;
 	}
 	return result;

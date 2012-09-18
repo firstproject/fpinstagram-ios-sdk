@@ -21,6 +21,7 @@
 - (void)dealloc {
 	[_window release];
 	[_viewController release];
+	[_navigationController release];
 	[super dealloc];
 }
 
@@ -42,9 +43,16 @@
 //	dialog.delegate = self;
 //	[dialog show];
 	
-	FPInstagramAuthController * authController = [[FPInstagramAuthController alloc] initWithSession:session];
+	FPInstagramAuthController * authController = [[[FPInstagramAuthController alloc] initWithSession:session] autorelease];
+//	authController.navigationItem.leftBarButtonItem = [[[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"Cancel", nil)
+//																						style:UIBarButtonItemStylePlain
+//																					   target:self
+//																					   action:@selector(cancelButtonPressed:)]
+//													   autorelease];
+//	self.navigationController = [[[UINavigationController alloc] initWithRootViewController:authController] autorelease];
 	authController.delegate = self;
 	[authController present];
+//	[self.window.rootViewController presentModalViewController:self.navigationController animated:YES];
 	
 	return YES;
 }
@@ -76,11 +84,11 @@
 
 - (void)instagramAuthDialogDidFinish:(FPInstagramAuthDialog *)dialog {
 	[dialog release];
-	[[FPInstagramSession activeSession] getPath:@"/users/self/feed" completionBlock:^(FPInstagramRequest *request, id responseObject) {
-		NSLog(@"%@", responseObject);
-	} failureBlock:^(FPInstagramRequest *request, NSError *error) {
-		
-	}];
+//	[[FPInstagramSession activeSession] getPath:@"/users/self/feed" completionBlock:^(FPInstagramRequest *request, id responseObject) {
+//		NSLog(@"%@", responseObject);
+//	} failureBlock:^(FPInstagramRequest *request, NSError *error) {
+//		
+//	}];
 }
 
 - (void)instagramAuth:(FPInstagramAuthDialog *)dialog dialogDidFailWithError:(NSError *)error {
@@ -90,16 +98,32 @@
 
 #pragma mark - FPInstagramAuthControllerDelegate
 
+- (void)cancelButtonPressed:(id)sender {
+//	[self.navigationController dismissModalViewControllerAnimated:YES];
+//	self.navigationController = nil;
+}
+
 - (void)instagramAuthControllerDidCancel:(FPInstagramAuthController *)controller {
-	[controller release];
+//	[self.navigationController dismissModalViewControllerAnimated:YES];
+//	self.navigationController = nil;
 }
 
 - (void)instagramAuthControllerDidFinish:(FPInstagramAuthController *)controller {
-	[controller release];
+	
+	[[FPInstagramSession activeSession] getPath:@"/users/self/feed" completionBlock:^(FPInstagramRequest *request, id responseObject) {
+		NSLog(@"%@", responseObject);
+		[[FPInstagramSession activeSession] clear];
+	} failureBlock:^(FPInstagramRequest *request, NSError *error) {
+		
+	}];
+	
+//	[self.navigationController dismissModalViewControllerAnimated:YES];
+//	self.navigationController = nil;
 }
 
 - (void)instagramAuthController:(FPInstagramAuthController *)controller didFailWithError:(NSError *)error {
-	[controller release];
+//	[self.navigationController dismissModalViewControllerAnimated:YES];
+//	self.navigationController = nil;
 }
 
 @end

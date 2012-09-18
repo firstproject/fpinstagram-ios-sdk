@@ -43,4 +43,13 @@ completionBlock:(FPRequestCompletionBlock)completionBlock
 						 failureBlock:failureBlock];
 }
 
+- (void)clear {
+	NSHTTPCookieStorage * cookieStorage = [NSHTTPCookieStorage sharedHTTPCookieStorage];
+	NSArray * cookies = [cookieStorage cookiesForURL:[NSURL URLWithString:@"http://instagram.com"]];
+
+	for (NSHTTPCookie * cookie in cookies) {
+		[cookieStorage deleteCookie:cookie];
+	}
+}
+
 @end

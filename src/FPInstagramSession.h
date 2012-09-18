@@ -22,4 +22,6 @@ completionBlock:(FPRequestCompletionBlock)completionBlock
    failureBlock:(FPRequestFailureBlock)failureBlock;
 //- (void)cancelRequestForPath:(NSString *)path;
 
+- (void)clear;
+
 @end
