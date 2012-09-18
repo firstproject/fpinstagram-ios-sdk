@@ -8,3 +8,4 @@
 
 #import "FPInstagramSession.h"
 #import "FPInstagramAuthDialog.h"
+#import "FPInstagramAuthController.h"

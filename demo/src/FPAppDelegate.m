@@ -12,7 +12,7 @@
 
 #import "FPInstagram.h"
 
-@interface FPAppDelegate () <FPInstagramAuthDialogDelegate>
+@interface FPAppDelegate () <FPInstagramAuthDialogDelegate, FPInstagramAuthControllerDelegate>
 
 @end
 
@@ -38,9 +38,13 @@
 	FPInstagramSession * session = [FPInstagramSession activeSession];
 	session.clientId = @"2766d41816de4ba7b47390a6c127d939";
 	session.redirectURI = @"http://www.catgrid.com";
-	FPInstagramAuthDialog * dialog = [[FPInstagramAuthDialog alloc] initWithInstagram:session];
-	dialog.delegate = self;
-	[dialog show];
+//	FPInstagramAuthDialog * dialog = [[FPInstagramAuthDialog alloc] initWithInstagram:session];
+//	dialog.delegate = self;
+//	[dialog show];
+	
+	FPInstagramAuthController * authController = [[FPInstagramAuthController alloc] initWithSession:session];
+	authController.delegate = self;
+	[authController present];
 	
 	return YES;
 }
@@ -82,6 +86,20 @@
 - (void)instagramAuth:(FPInstagramAuthDialog *)dialog dialogDidFailWithError:(NSError *)error {
 	[dialog release];
 	NSLog(@"%@", error);
+}
+
+#pragma mark - FPInstagramAuthControllerDelegate
+
+- (void)instagramAuthControllerDidCancel:(FPInstagramAuthController *)controller {
+	[controller release];
+}
+
+- (void)instagramAuthControllerDidFinish:(FPInstagramAuthController *)controller {
+	[controller release];
+}
+
+- (void)instagramAuthController:(FPInstagramAuthController *)controller didFailWithError:(NSError *)error {
+	[controller release];
 }
 
 @end
