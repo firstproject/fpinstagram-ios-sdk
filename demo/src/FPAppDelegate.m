@@ -37,12 +37,9 @@
 	[self.window makeKeyAndVisible];
 	
 	FPInstagramSession * session = [FPInstagramSession activeSession];
-	session.clientId = @"2766d41816de4ba7b47390a6c127d939";
-	session.redirectURI = @"http://www.catgrid.com";
-//	FPInstagramAuthDialog * dialog = [[FPInstagramAuthDialog alloc] initWithInstagram:session];
-//	dialog.delegate = self;
-//	[dialog show];
-	
+	session.clientId = @"b72e99385b6446c183b57c7ef472943c";
+	session.redirectURI = @"http://www.catgrid.com/success";
+
 	FPInstagramAuthController * authController = [[[FPInstagramAuthController alloc] initWithSession:session] autorelease];
 //	authController.navigationItem.leftBarButtonItem = [[[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"Cancel", nil)
 //																						style:UIBarButtonItemStylePlain

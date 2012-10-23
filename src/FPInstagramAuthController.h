@@ -13,7 +13,7 @@
 
 @interface FPInstagramAuthController : UIViewController
 
-@property (nonatomic, assign) id<FPInstagramAuthControllerDelegate>	delegate;
+@property (nonatomic, weak) id<FPInstagramAuthControllerDelegate>	delegate;
 
 - (id)initWithSession:(FPInstagramSession *)session;
 - (void)present;

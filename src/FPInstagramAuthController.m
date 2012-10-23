@@ -12,9 +12,9 @@
 static NSString * const kAuthURIFormat = @"https://instagram.com/oauth/authorize/?client_id=%@&redirect_uri=%@&response_type=token";
 
 @interface FPInstagramAuthController () <UIWebViewDelegate>
-@property (nonatomic, assign) FPInstagramSession		* session;
-@property (nonatomic, retain) UIWebView					* webView;
-@property (nonatomic, retain) UIActivityIndicatorView	* loadingAcitivity;
+@property (nonatomic, weak) FPInstagramSession		* session;
+@property (nonatomic, strong) UIWebView					* webView;
+@property (nonatomic, strong) UIActivityIndicatorView	* loadingAcitivity;
 @end
 
 @implementation FPInstagramAuthController
@@ -26,9 +26,6 @@ static NSString * const kAuthURIFormat = @"https://instagram.com/oauth/authorize
 - (void)dealloc {
 	_delegate = nil;
 	_session = nil;
-	FPRELEASE_SAFELY(_webView);
-	FPRELEASE_SAFELY(_loadingAcitivity);
-	[super dealloc];
 }
 
 - (id)initWithSession:(FPInstagramSession *)session {
@@ -43,11 +40,10 @@ static NSString * const kAuthURIFormat = @"https://instagram.com/oauth/authorize
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Custom initialization
-		self.navigationItem.leftBarButtonItem = [[[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"Cancel", nil)
-																				  style:UIBarButtonItemStylePlain
-																				 target:self
-																				 action:@selector(cancelButtonPressed:)]
-												 autorelease];
+		self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"Cancel", nil)
+																				 style:UIBarButtonItemStylePlain
+																				target:self
+																				action:@selector(cancelButtonPressed:)];
     }
     return self;
 }
@@ -74,9 +70,6 @@ static NSString * const kAuthURIFormat = @"https://instagram.com/oauth/authorize
 }
 
 - (void)viewDidUnload {
-	FPRELEASE_SAFELY(_webView);
-	FPRELEASE_SAFELY(_loadingAcitivity);
-	
 	[super viewDidUnload];
 	// Release any retained subviews of the main view.
 }
@@ -87,16 +80,14 @@ static NSString * const kAuthURIFormat = @"https://instagram.com/oauth/authorize
 
 - (void)present {
 	if (![self isViewLoaded]) {
-		[self retain];
 		
 		UIViewController * windowRootController = [[[[UIApplication sharedApplication] delegate] window] rootViewController];
-		[windowRootController presentModalViewController:[[[UINavigationController alloc] initWithRootViewController:self] autorelease]
+		[windowRootController presentModalViewController:[[UINavigationController alloc] initWithRootViewController:self]
 												animated:YES];
 	}
 }
 
 - (void)dismiss {
-	[self release];
 	[self dismissModalViewControllerAnimated:YES];
 }
 

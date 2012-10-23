@@ -24,14 +24,6 @@ static FPInstagramSession	* ActiveSession = nil;
 	return ActiveSession;
 }
 
-- (void)dealloc {
-	FPRELEASE_SAFELY(_clientId);
-	FPRELEASE_SAFELY(_redirectURI);
-	FPRELEASE_SAFELY(_accessToken);
-	
-	[super dealloc];
-}
-
 - (void)getPath:(NSString *)path
 completionBlock:(FPRequestCompletionBlock)completionBlock
    failureBlock:(FPRequestFailureBlock)failureBlock {

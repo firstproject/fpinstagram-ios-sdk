@@ -9,16 +9,17 @@
 #import "FPInstagramRequest.h"
 #import "FPInstagramSession.h"
 
-#import "FPJSONUtilities.h"
 
 static NSString * const kBaseURI	= @"https://api.instagram.com/v1/";
 
 @interface FPInstagramRequest () <NSURLConnectionDelegate, NSURLConnectionDataDelegate>
-@property (nonatomic, retain) NSURLRequest		* request;
-@property (nonatomic, retain) NSURLConnection	* connection;
-@property (nonatomic, retain) NSMutableData		* receiveData;
+@property (nonatomic, strong) NSURLRequest		* request;
+@property (nonatomic, strong) NSURLConnection	* connection;
+@property (nonatomic, strong) NSMutableData		* receiveData;
 @property (nonatomic, copy) FPRequestCompletionBlock	completionBlock;
 @property (nonatomic, copy) FPRequestFailureBlock		failureBlock;
+@property (nonatomic, strong, readwrite) NSError		* error;
+@property (nonatomic, strong, readwrite) id			responseObject;
 @end
 
 @implementation FPInstagramRequest
@@ -37,18 +38,12 @@ static NSArray * FPMakePairs(NSDictionary * parameters) {
 	[parameters enumerateKeysAndObjectsUsingBlock:^(id key, id obj, BOOL *stop) {
 		[keysValues addObject:[NSString stringWithFormat:@"%@=%@", key, obj]];
 	}];
-	return [[keysValues copy] autorelease];
+	return [keysValues copy];
 }
 
 - (void)dealloc {
 	_session = nil;
 	[_connection cancel];
-	FPRELEASE_SAFELY(_completionBlock);
-	FPRELEASE_SAFELY(_failureBlock);
-	FPRELEASE_SAFELY(_connection);
-	FPRELEASE_SAFELY(_receiveData);
-	
-	[super dealloc];
 }
 
 - (NSMutableURLRequest *)requestPath:(NSString *)path
@@ -101,13 +96,12 @@ static NSArray * FPMakePairs(NSDictionary * parameters) {
 }
 
 - (void)connectionDidFinishLoading:(NSURLConnection *)connection {
-	FPRELEASE_SAFELY(_error);
-	FPRELEASE_SAFELY(_responseObject);
-//	NSLog(@"%@", [[[NSString alloc] initWithData:_receiveData encoding:NSUTF8StringEncoding] autorelease]);
-	_responseObject = [(NSObject *)FPJSONDecode(_receiveData, &_error) retain];
-	
-	self.connection = nil;
-	self.receiveData = nil;
+	NSError * error = nil;
+	[self setResponseObject:[NSJSONSerialization JSONObjectWithData:_receiveData options:0 error:&error]];
+
+	[self setError:error];
+	[self setConnection:nil];
+	[self setReceiveData:nil];
 	
 	if (_error) {
 		if (self.failureBlock) {
@@ -121,12 +115,10 @@ static NSArray * FPMakePairs(NSDictionary * parameters) {
 }
 
 - (void)connection:(NSURLConnection *)connection didFailWithError:(NSError *)error {
-	self.connection = nil;
-	self.receiveData = nil;
-	
-	FPRELEASE_SAFELY(_responseObject);
-	FPRELEASE_SAFELY(_error);
-	_error = error;
+	[self setConnection:nil];
+	[self setReceiveData:nil];
+	[self setResponseObject:nil];
+	[self setError:error];
 	
 	if (self.failureBlock) {
 		self.failureBlock(self, _error);

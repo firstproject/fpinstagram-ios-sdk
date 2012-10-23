@@ -8,16 +8,18 @@
 
 #import <Foundation/Foundation.h>
 
+@class FPInstagramSession;
 @class FPInstagramRequest;
+
 typedef void (^FPRequestCompletionBlock)(FPInstagramRequest * request, id responseObject);
 typedef void (^FPRequestFailureBlock)(FPInstagramRequest * request, NSError * error);
 
-@class FPInstagramSession;
+
 @interface FPInstagramRequest : NSObject
 
-@property (nonatomic, assign) FPInstagramSession	* session;
-@property (nonatomic, retain, readonly) NSError		* error;
-@property (nonatomic, retain, readonly) id			responseObject;
+@property (nonatomic, unsafe_unretained) FPInstagramSession	* session;
+@property (nonatomic, strong, readonly) NSError		* error;
+@property (nonatomic, strong, readonly) id			responseObject;
 
 - (void)getPath:(NSString *)path parameters:(NSDictionary *)parameters;
 

@@ -14,8 +14,8 @@
 
 @interface FPInstagramAuthDialog : UIView
 
-@property (nonatomic, assign) FPInstagramSession	* session;
-@property (nonatomic, assign) id<FPInstagramAuthDialogDelegate>	delegate;
+@property (nonatomic, unsafe_unretained) FPInstagramSession	* session;
+@property (nonatomic, unsafe_unretained) id<FPInstagramAuthDialogDelegate>	delegate;
 
 - (id)initWithInstagram:(FPInstagramSession *)session;
 

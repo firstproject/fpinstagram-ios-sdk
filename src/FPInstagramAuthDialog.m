@@ -15,8 +15,8 @@ static NSString * const kAuthURIFormat = @"https://instagram.com/oauth/authorize
 
 @interface FPInstagramAuthDialog () <UIWebViewDelegate>
 @property (nonatomic, getter = isShowing) BOOL	showing;
-@property (nonatomic, retain) UIWebView			* webView;
-@property (nonatomic, retain) UIActivityIndicatorView	* loadingAcitivity;
+@property (nonatomic, strong) UIWebView			* webView;
+@property (nonatomic, strong) UIActivityIndicatorView	* loadingAcitivity;
 
 @end
 
@@ -31,10 +31,6 @@ static NSString * const kAuthURIFormat = @"https://instagram.com/oauth/authorize
 
 - (void)dealloc {
 	_delegate = nil;
-	FPRELEASE_SAFELY(_webView);
-	FPRELEASE_SAFELY(_loadingAcitivity);
-	
-	[super dealloc];
 }
 
 - (id)initWithInstagram:(FPInstagramSession *)session {
